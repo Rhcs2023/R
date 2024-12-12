@@ -541,7 +541,7 @@ def traducir_oracion(oracion):
     oracion_traducida = []
     
     for palabra in palabras:
-        if palabra.lower() == 'mi':
+        if palabra.lower() == 'mi,tu':
             # Si la palabra es 'a', la añadimos al final
             oracion_traducida.append('1 ')
         else:
@@ -551,7 +551,7 @@ def traducir_oracion(oracion):
     if '1 ' in oracion_traducida:
         # Encontramos la posición de '1 ' y la movemos al segundo lugar
         oracion_traducida.remove('1 ')
-        oracion_traducida.insert(1, 'ri ')
+        oracion_traducida.insert(1, 'ri,ro ')
     
     return " ".join(oracion_traducida)
 
