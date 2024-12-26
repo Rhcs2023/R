@@ -11,7 +11,7 @@ diccionario = {
     'e': '5 ',
     'f': '6 ',
     'g': '7 ',
-     'mi': 'ri ',
+    'mi': 'ri ',
 
 }
 
@@ -30,7 +30,7 @@ def traducir_oracion(oracion):
     if '1 ' in oracion_traducida:
         # Encontramos la posición de '1 ' y la movemos al segundo lugar
         oracion_traducida.remove('1 ')
-        oracion_traducida.insert(1, 'ri','ro')
+        oracion_traducida.insert(1, ' ')
     
     return " ".join(oracion_traducida)
 
