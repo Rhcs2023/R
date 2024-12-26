@@ -6,33 +6,34 @@ import tempfile
 diccionario = {
     'a': 'uno ',
     'b': 'dos ',
-    'c': 'tres',
+    'c': 'tres ',
     'd': 'cuatro ',
     'e': 'cinco ',
     'f': 'seis ',
     'g': 'siete ',
     'mi': 'ri ',
-
 }
 
 def traducir_oracion(oracion):
     palabras = oracion.split()
     oracion_traducida = []
-    
+    mi_present = False
+
     for palabra in palabras:
-        if palabra.lower() == 'mi''tu':
-            # Si la palabra es 'a', la añadimos al final
-            oracion_traducida.append('1 ')
+        if palabra.lower() == 'mi':
+            oracion_traducida.append(diccionario['mi'])
+            mi_present = True
         else:
             oracion_traducida.append(diccionario.get(palabra.lower(), palabra))
     
-    # Si hay 'a' en la oración, la movemos al segundo lugar
-    if '1 ' in oracion_traducida:
-        # Encontramos la posición de '1 ' y la movemos al segundo lugar
-        oracion_traducida.remove('1 ')
-        oracion_traducida.insert(1, ' ')
+    # Si 'mi' está presente, aseguramos que esté en segundo lugar
+    if mi_present:
+        # Si hay más de una palabra, movemos 'mi' al segundo lugar
+        if len(oracion_traducida) > 1:
+            oracion_traducida.remove(diccionario['mi'])
+            oracion_traducida.insert(1, diccionario['mi'])
     
-    return " ".join(oracion_traducida)
+    return " ".join(oracion_traducida).strip()
 
 def reproducir_audio(texto, lang):
     tts = gTTS(text=texto, lang=lang)
@@ -42,7 +43,7 @@ def reproducir_audio(texto, lang):
             audio_bytes = audio_file.read()
     return audio_bytes
 
-st.title("Traductor de numeros")
+st.title("Traductor de números")
 
 # Estado de la sesión para la traducción
 if 'oracion_traducida' not in st.session_state:
