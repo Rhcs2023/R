@@ -572,7 +572,7 @@ if 'oracion_traducida' not in st.session_state:
     st.session_state.oracion_traducida = ""
 
 # Opción para introducir texto
-oracion_usuario = st.text_input("Introduce una oración, Ejemplo: Mi padre va al centro, presiona enter:")
+oracion_usuario = st.text_input("Introduce una oración; Ejemplo: Mi padre va al centro, presiona enter:")
 
 # Traducir la oración ingresada por el usuario
 if oracion_usuario:
